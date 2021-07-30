@@ -3,22 +3,17 @@
  * @return {boolean}
  */
 var squareIsWhite = function(coordinates) {
-let blackOdds = ["a", "c", "e", "g"];
-let whiteOdds = ["b", "d", "f", "h"]
+let chars = ["a", "b", "c", "d", "e", "f", "g", "h"];
+let coords = coordinates.split("");
+let alphaIdx = chars.indexOf(coordinates.split("")[0]);
+let pos = coordinates.split("").pop()
 
-let c = coordinates.split("");
+if (
+  (alphaIdx % 2 === 0 && pos % 2 === 0) ||
+  (alphaIdx % 2 !== 0 && pos % 2 !== 0)
+) {
+  return true;
+} 
 
-if(c.pop() % 2 !== 0) { //if an odd number
-    if(blackOdds.includes(c[0])) {
-        return false;
-    } else {
-        return true
-    }
-} else { //if even number
-    if (whiteOdds.includes(c[0])) {
-      return false;
-    } else {
-      return true;
-    }
-}
+return false;
 };
