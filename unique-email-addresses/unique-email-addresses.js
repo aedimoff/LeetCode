@@ -3,15 +3,13 @@
  * @return {number}
  */
 var numUniqueEmails = function(emails) {
-    let res = [];
+    let res = new Set();
     
     emails.forEach(email => {
-        let validEmail = getWorkingEmail(email)
-        if(!res.includes(validEmail)) res.push(validEmail)
+        res.add(getWorkingEmail(email))
     });
     
-    console.log(res)
-    return res.length;
+    return res.size;
 };
 
 var getWorkingEmail = function(email) {
